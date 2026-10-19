@@ -1,0 +1,50 @@
+http-bind: 0.0.0.0
+http-port: 19395
+public-base-url: http://YOUR_SERVER_ADDRESS:19395
+yt-dlp-path: yt-dlp
+ffmpeg-path: ffmpeg
+ffprobe-path: ffprobe
+process-timeout-seconds: 120
+pack-load-timeout-seconds: 120
+max-duration-seconds: 600
+max-queue: 50
+default-playlist:
+- final-duet
+- fallen-down
+- your-best-friend
+- once-upon-a-time
+- snowy
+- botsu-8
+songs:
+  final-duet:
+    title: OMORI - Final Duet
+    file: final-duet.ogg
+  fallen-down:
+    title: Fallen Down - Toby Fox
+    file: fallen-down.ogg
+  your-best-friend:
+    title: Your Best Friend - Toby Fox
+    file: your-best-friend.ogg
+  once-upon-a-time:
+    title: Once Upon a Time - Toby Fox
+    file: once-upon-a-time.ogg
+  snowy:
+    title: Snowy - Toby Fox
+    file: snowy.ogg
+  botsu-8:
+    title: Botsu 8 (The Last Dance Song)
+    file: botsu-8.ogg
+biome-music:
+  enabled: true
+  biomes:
+  - SNOWY_PLAINS
+  - ICE_SPIKES
+  - SNOWY_TAIGA
+  - SNOWY_BEACH
+  - GROVE
+  - SNOWY_SLOPES
+  - FROZEN_PEAKS
+  - JAGGED_PEAKS
+  - FROZEN_RIVER
+  - FROZEN_OCEAN
+  - DEEP_FROZEN_OCEAN

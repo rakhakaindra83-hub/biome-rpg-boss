@@ -1,0 +1,120 @@
+RPG BOSS AUTO PACK 2.8.0
+Java 21 / Minecraft Java 1.21.11 / Paper-Folia / MythicMobs 5.13.0
+Plugin name tetap YouTubeBacksound. JAR ini MENGGANTIKAN versi musik sebelumnya.
+
+ISI PAKET
+- Enam boss RPG MythicMobs, skill telegraph, boss bar dan mode Rage HP rendah.
+- Spawn otomatis per biome dengan reservasi antar-region, cap dan cooldown.
+- Resource pack 75.0: enam masker/mahkota 3D, enam senjata 3D dan enam sigil.
+- Datapack 94.1: enam tabel loot data-only; tidak berisi function/command tick.
+- Semua 24 audio biome, deteksi cave berbasis Y, fade dan GUI volume sebelumnya.
+- Lagu boss tetap nonaktif sambil menunggu audio dari pengguna.
+
+TAMPILAN BOSS
+Boss memakai tubuh mob vanilla yang diperbesar dengan masker/mahkota dan senjata
+3D kustom. Bukan model tubuh penuh dengan animasi ModelEngine. Pemain vanilla
+Java bisa melihatnya setelah menerima resource pack; tidak perlu mod klien.
+Frost: Stray + mahkota es + pedang kristal.
+Desert: Husk + topeng emas + kapak gurun.
+Cave: Wither Skeleton + topeng abyss + sabit.
+Forest: Iron Golem + mahkota akar + palu besar.
+Ocean: Drowned + mahkota laut + trident.
+Nether: Piglin Brute + topeng bara + greatsword.
+
+PASANG OTOMATIS
+1. Stop server. Pastikan MythicMobs 5.13.0 yang diberikan sudah di plugins/.
+2. Ganti JAR YouTubeBacksound lama dengan JAR ini. Jangan pasang dua versi.
+3. Start server. Plugin memasang file yang belum ada:
+   plugins/YouTubeBacksound/boss-spawns.yml
+   plugins/YouTubeBacksound/rpgboss-resourcepack.zip
+   plugins/YouTubeBacksound/rpgboss-datapack.zip
+   plugins/YouTubeBacksound/PETUNJUK-RPG-AUTO.txt
+   plugins/MythicMobs/Packs/RPG_Biome_Bosses/...
+4. Jika pack Mythic baru disalin, plugin menjadwalkan satu kali perintah reload
+   MythicMobs dari global scheduler. Kalau boss sudah terpasang dari 2.7.0,
+   restart biasa sudah memuat definisinya. File yang ada tidak ditimpa.
+5. Aset RPG digabung otomatis ke resource pack musik yang disajikan lewat
+   public-base-url dan port di config.yml. Pemain menerima/menyetujui Server
+   Resource Packs ketika join; tidak perlu memasang ZIP secara manual.
+6. Datapack disalin otomatis ke datapacks/rpgboss-data.zip pada world utama.
+   File baru dimuat Minecraft pada RESTART BERIKUTNYA. Jangan memakai /reload
+   untuk ini. Fitur spawn dan loot fallback plugin langsung bekerja pada startup
+   pertama; datapack tidak wajib untuk menjalankan AI/skill/otomatisasi.
+7. Tetap gunakan URL/port publik hosting yang dapat diakses komputer pemain.
+   ZIP resource pack terpisah di folder plugin adalah aset visual; pack gabungan
+   yang memuat musik tersedia sebagai resourcepack.zip setelah selesai dibangun.
+
+ATURAN OTOMATIS BAWAAN
+- Setiap 60 detik memilih satu pemain online bergiliran, lalu peluang spawn 20%.
+- Hanya pemain Survival/Adventure, hidup, aktif sesi ini minimal 5 menit.
+- Boss muncul 24-40 blok dari pemain, pada chunk yang sudah dimuat dan lokasi
+  dengan ruang yang cukup. Nether menghindari bedrock roof; cave mencari ruang
+  dekat kedalaman pemain; Tide Reaver dapat muncul di kolom air.
+- Jarak aman dari spawn world: 256 blok horizontal.
+- Maksimal 6 boss global, 2 per world, jarak antar-boss minimal 192 blok.
+- Cooldown area grid 256x256: 30 menit; cooldown pemain: 20 menit.
+- Cooldown disimpan pada spawn-state.yml setiap menit dan saat plugin berhenti.
+- Boss otomatis memiliki masa aktif 30 menit; jika masih punya target, penghapusan
+  ditunda. Boss manual dari MythicMobs tidak diberi timer otomatis ini.
+- Tidak memilih boss otomatis di End. World hub/lobby/spawn/world_lobby dikecualikan.
+- File boss-spawns.yml mengatur peluang, timer, cap, daftar world dan tema aktif.
+  /rpgboss reload menerapkan pengaturan spawn; existing boss tidak langsung dihapus
+  ketika cap diturunkan. Perlindungan plugin claim pihak ketiga tidak dikonfigurasi
+  oleh paket ini; gunakan allowed-worlds/excluded-worlds/radius sesuai arena server.
+
+PEMETAAN SPAWN
+snow / taiga       -> RPG_FrostWarden    (650 HP)
+desert / badlands / savanna -> RPG_DuneTyrant (800 HP)
+cave / lush-caves / deep-dark -> RPG_AbyssSentinel (900 HP)
+forest / plains / jungle / swamp dan kelompok lain -> RPG_AncientTreant (1000 HP)
+ocean / beach / river -> RPG_TideReaver (700 HP)
+Nether             -> RPG_EmberOverlord (1000 HP)
+Aturan cave tetap berbasis Y <= cave-max-y, termasuk air. Pemain yang menyelam
+lebih dalam dari batas ini menggunakan kelompok cave, sesuai permintaan sebelumnya.
+Biome beku dipilih sebelum kategori ocean/river sehingga menggunakan Frost Warden.
+
+PERINTAH
+/rpgboss             atau /rpgboss menu   : GUI codex enam boss
+/rpgboss status                          : jumlah aktif dan status otomatis
+/rpgboss toggle                          : opt-out/opt-in spawn dekat pemain itu
+/rpgboss spawn frost                     : uji spawn oleh admin
+/rpgboss spawn desert|cave|forest|ocean|nether
+/rpgboss reload                          : reload pengaturan spawn oleh admin
+/mm mobs spawn RPG_FrostWarden 1          : perintah native MythicMobs, untuk uji
+/mm reload                               : reload perubahan skill/mob MythicMobs
+/ytmusic reload                          : bangun ulang musik/resource pack
+/musicgui                                : volume pribadi
+Permission rpgboss.use default semua pemain; rpgboss.admin default OP.
+Perintah spawn admin melewati peluang, waktu sesi, hub dan cooldown pemain,
+tetapi tetap mengikuti cap, jarak antar-boss dan pemeriksaan lokasi aman.
+Toggle hanya menonaktifkan pemilihan diri sebagai pemicu spawn otomatis, bukan
+membuat pemain kebal terhadap boss yang dipicu oleh pemain lain.
+
+LOOT
+Semua boss memberi satu sigil koleksi dengan model custom. Peluang senjata custom
+20%, dengan enchant tier III/Unbreaking II; ubah weapon-drop-chance untuk mengatur.
+Datapack menambah emerald 4-8 dan peluang diamond 25%; fallback plugin memberi
+bonus setara ketika tabel datapack belum tersedia. Loot dasar MythicMobs tetap
+mengikuti file boss yang sudah ada, sehingga bonus ini ditambahkan ke loot dasar.
+Sigil adalah trofi koleksi, bukan item summon. Mahkota adalah kosmetik boss.
+Data pack tidak memakai function, scoreboard, summon atau bossbar command yang
+banyak dinonaktifkan pada Folia. Fitur otomatis utama dijalankan oleh plugin.
+
+MUSIK BOSS MENYUSUL
+Slot boss-snow.ogg, boss-desert.ogg, boss-cave.ogg, boss-forest.ogg, boss-ocean.ogg
+serta boss-nether.ogg tetap disiapkan di boss-music.yml dengan enabled:false.
+Nanti upload OGG Vorbis ke music/, aktifkan profil dan /ytmusic reload.
+Sementara itu musik biome tetap berjalan selama melawan boss. Sistem encounter
+per pemain dan transisi boss/biome sudah tersedia dari versi sebelumnya.
+
+VALIDASI
+Kompilasi Java 21 dengan Paper API 1.21.11 dan JAR MythicMobs 5.13.0 berhasil.
+Pengujian reservasi/cap antar-region, cooldown/persistensi, mapping tema,
+encounter, deteksi cave dan fade lulus. Overlay resource pack diuji menjaga audio,
+metadata dan hash deterministik; 18 model/item, 24 tekstur dan enam loot table
+lulus pemeriksaan referensi, JSON dan ZIP. Model diperiksa lewat preview geometri.
+Belum diuji langsung di server Folia/klien Minecraft aktif. Uji /rpgboss status,
+spawn manual di arena aman, skill, drop, model kepala/senjata, dua pemain, dan
+spawn otomatis setelah syarat sesi/jarak/waktu terpenuhi. Jika ingin menguji
+cepat, sementara kurangi minimum-session-seconds dan naikkan spawn-chance di
+boss-spawns.yml lalu /rpgboss reload, kemudian kembalikan pengaturan normal.

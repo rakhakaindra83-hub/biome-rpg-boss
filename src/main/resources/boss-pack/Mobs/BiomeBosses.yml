@@ -1,0 +1,275 @@
+# Enam boss RPG. Spawn manual dengan /mm mobs spawn <ID>. Tidak ada random spawn.
+RPG_FrostWarden:
+  Type: STRAY
+  Display: '&b&lFrost Warden'
+  Health: 650
+  Damage: 8
+  Armor: 8
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&b&lFrost Warden'
+    Range: 48
+    Color: BLUE
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_FrostNova} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+  Equipment:
+  - IRON_SWORD HAND
+RPG_DuneTyrant:
+  Type: HUSK
+  Display: '&6&lDune Tyrant'
+  Health: 800
+  Damage: 10
+  Armor: 10
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&6&lDune Tyrant'
+    Range: 48
+    Color: YELLOW
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_Sandstorm} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+  Equipment:
+  - GOLDEN_AXE HAND
+RPG_AbyssSentinel:
+  Type: WITHER_SKELETON
+  Display: '&3&lAbyss Sentinel'
+  Health: 900
+  Damage: 11
+  Armor: 12
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&3&lAbyss Sentinel'
+    Range: 48
+    Color: PURPLE
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_AbyssWave} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+  Equipment:
+  - STONE_SWORD HAND
+RPG_AncientTreant:
+  Type: IRON_GOLEM
+  Display: '&2&lAncient Treant'
+  Health: 1000
+  Damage: 12
+  Armor: 12
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&2&lAncient Treant'
+    Range: 48
+    Color: GREEN
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_RootQuake} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+RPG_TideReaver:
+  Type: DROWNED
+  Display: '&9&lTide Reaver'
+  Health: 700
+  Damage: 9
+  Armor: 8
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&9&lTide Reaver'
+    Range: 48
+    Color: BLUE
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_TidalCrash} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+  Equipment:
+  - TRIDENT HAND
+RPG_EmberOverlord:
+  Type: PIGLIN_BRUTE
+  Display: '&c&lEmber Overlord'
+  Health: 1000
+  Damage: 12
+  Armor: 12
+  Faction: YTBRPG_Bosses
+  BossBar:
+    Enabled: true
+    Title: '&c&lEmber Overlord'
+    Range: 48
+    Color: RED
+    Style: SEGMENTED_10
+    CreateFog: false
+    DarkenSky: false
+    PlayMusic: false
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  - randomlookaround
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    FollowRange: 32
+    MaxCombatDistance: 48
+    KnockbackResistance: 0.8
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventSunburn: true
+    PreventTransformation: true
+    Despawn: CHUNK
+    Scale: 1.4
+  Skills:
+  - skill{s=YTBRPG_EmberBurst} @self ~onTimer:180
+  - skill{s=YTBRPG_Rage} @self ~onTimer:200
+  Drops:
+  - EMERALD 4to8 1
+  - DIAMOND 1to2 0.35
+  Equipment:
+  - NETHERITE_AXE HAND

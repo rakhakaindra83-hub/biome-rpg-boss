@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "min_format": [
+      94,
+      1
+    ],
+    "max_format": [
+      94,
+      1
+    ],
+    "description": "RPG Biome Bosses | data-only loot tables | Java 1.21.11"
+  }
+}

@@ -1,0 +1,78 @@
+# Skill bawaan MythicMobs: telegraph 1 detik, damage mengikuti armor, tanpa perusakan blok.
+YTBRPG_FrostNova:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&bFrost Warden &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=SNOWFLAKE;amount=50;hSpread=3;ySpread=0.4;speed=0.02} @self
+  - delay 20
+  - damage{amount=6;ignoreArmor=false} @PlayersInRadius{r=6}
+  - potion{type=SLOW;duration=60;level=1} @PlayersInRadius{r=6}
+YTBRPG_Sandstorm:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&6Dune Tyrant &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=DUST_PLUME;amount=50;hSpread=3;ySpread=0.4;speed=0.02} @self
+  - delay 20
+  - damage{amount=7;ignoreArmor=false} @PlayersInRadius{r=6}
+  - potion{type=BLINDNESS;duration=60;level=1} @PlayersInRadius{r=6}
+YTBRPG_AbyssWave:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&3Abyss Sentinel &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=SOUL;amount=50;hSpread=3;ySpread=0.4;speed=0.02} @self
+  - delay 20
+  - damage{amount=7;ignoreArmor=false} @PlayersInRadius{r=6}
+  - potion{type=WEAKNESS;duration=60;level=1} @PlayersInRadius{r=6}
+YTBRPG_RootQuake:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&2Ancient Treant &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=SPORE_BLOSSOM_AIR;amount=50;hSpread=3;ySpread=0.4;speed=0.02}
+    @self
+  - delay 20
+  - damage{amount=8;ignoreArmor=false} @PlayersInRadius{r=6}
+  - potion{type=SLOW;duration=60;level=1} @PlayersInRadius{r=6}
+YTBRPG_TidalCrash:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&9Tide Reaver &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=SPLASH;amount=50;hSpread=3;ySpread=0.4;speed=0.02} @self
+  - delay 20
+  - damage{amount=6;ignoreArmor=false} @PlayersInRadius{r=6}
+  - potion{type=SLOW;duration=60;level=1} @PlayersInRadius{r=6}
+  - throw{velocity=2;velocityY=0.5} @PlayersInRadius{r=5}
+YTBRPG_EmberBurst:
+  Cooldown: 9
+  Conditions:
+  - incombat
+  - targetwithin{d=20}
+  Skills:
+  - message{m="&cEmber Overlord &7menyiapkan serangan area - menjauh!"} @PlayersInRadius{r=16}
+  - effect:particles{p=FLAME;amount=50;hSpread=3;ySpread=0.4;speed=0.02} @self
+  - delay 20
+  - damage{amount=8;ignoreArmor=false} @PlayersInRadius{r=6}
+  - ignite{ticks=40} @PlayersInRadius{r=6}
+YTBRPG_Rage:
+  Cooldown: 20
+  Conditions:
+  - incombat
+  - health{h=<40%}
+  Skills:
+  - message{m="&c<caster.name> memasuki mode Rage!"} @PlayersInRadius{r=24}
+  - potion{type=SPEED;duration=100;level=1} @self
+  - potion{type=INCREASE_DAMAGE;duration=100;level=0} @self

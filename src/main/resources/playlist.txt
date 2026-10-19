@@ -1,0 +1,8 @@
+# Enam lagu OGG lokal pengguna. Tidak perlu program tambahan di hosting.
+# Setelah mengganti file ini: /ytmusic reload lalu /ytmusic playlist.
+final-duet
+fallen-down
+your-best-friend
+once-upon-a-time
+snowy
+botsu-8

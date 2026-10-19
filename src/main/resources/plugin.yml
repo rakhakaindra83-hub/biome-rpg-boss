@@ -1,0 +1,40 @@
+name: YouTubeBacksound
+version: 2.8.0
+main: com.backsound.youtube.YouTubeBacksound
+api-version: 1.21.11
+folia-supported: true
+description: 'Custom RPG biome bosses: auto spawning, 3D crowns/weapons, loot datapack,
+  biome music and per-player boss combat audio.'
+commands:
+  ytmusic:
+    aliases:
+    - backsound
+    - music
+    usage: /ytmusic <play|playlist|file|skip|stop|queue|reload|check|volume>
+  musicgui:
+    aliases:
+    - musicvolume
+    usage: /musicgui
+    description: Atur volume musik pribadi
+    permission: backsound.volume
+  rpgboss:
+    aliases:
+    - rpgbosses
+    usage: /rpgboss [menu|status|toggle|spawn|reload]
+    description: RPG Boss Codex, spawn otomatis dan pengaturan admin
+    permission: rpgboss.use
+permissions:
+  backsound.use:
+    default: op
+    description: Mengendalikan musik seluruh server
+  backsound.volume:
+    default: true
+    description: Mengatur volume musik pribadi
+  rpgboss.use:
+    default: true
+    description: Melihat codex/status dan opt-out spawn boss
+  rpgboss.admin:
+    default: op
+    description: Spawn manual dan reload konfigurasi boss
+softdepend:
+- MythicMobs

@@ -1,0 +1,8 @@
+build/
+dist/
+deps/*.jar
+audio/
+*.log
+.idea/
+.vscode/
+__pycache__/

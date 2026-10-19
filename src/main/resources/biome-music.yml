@@ -1,0 +1,180 @@
+# 2.6.0: Cave Overworld memakai kedalaman Y, termasuk air dan bukaan skylight.
+# cave-max-y: masuk gua saat Y <= nilai ini (default 48).
+# Fade-out selesai dahulu, lalu lagu biome tujuan mulai dengan fade-in.
+# Durasi fade: 0 untuk langsung, maksimum 10 detik. /ytmusic reload setelah edit.
+enabled: true
+show-biome-titles: true
+cave-max-y: 48
+profiles:
+  snow:
+    file: biomepack-snowy.ogg
+    files:
+    - biomepack-snowy.ogg
+    fallback: ''
+    title: Snowy
+    color: '#B9EDFF'
+  desert:
+    file: biomepack-desert.ogg
+    files:
+    - biomepack-desert.ogg
+    fallback: ''
+    title: Hustle and Bustle of Ormos
+    color: '#F7CD70'
+  cave:
+    file: biomepack-cave.ogg
+    files:
+    - biomepack-cave.ogg
+    - biomepack-cave-2.ogg
+    - biomepack-cave-3.ogg
+    fallback: ''
+    title: Cave Playlist
+    color: '#9BAAC4'
+  deep-dark:
+    file: biomepack-cave-3.ogg
+    files:
+    - biomepack-cave-3.ogg
+    fallback: ''
+    title: Cave 3
+    color: '#36B9C8'
+  lush-caves:
+    file: biomepack-cave-2.ogg
+    files:
+    - biomepack-cave-2.ogg
+    fallback: ''
+    title: Cave 2
+    color: '#92D88A'
+  plains:
+    file: biomepack-plains.ogg
+    files:
+    - biomepack-plains.ogg
+    fallback: ''
+    title: Plains
+    color: '#A9DB78'
+  forest:
+    file: biomepack-jadeite-01.ogg
+    files:
+    - biomepack-jadeite-01.ogg
+    - biomepack-jadeite-02.ogg
+    - biomepack-jadeite-03.ogg
+    - biomepack-jadeite-04.ogg
+    - biomepack-jadeite-05.ogg
+    - biomepack-jadeite-06.ogg
+    fallback: ''
+    title: Jadeite Redolence
+    color: '#58B878'
+  jungle:
+    file: biomepack-jadeite-01.ogg
+    files:
+    - biomepack-jadeite-01.ogg
+    - biomepack-jadeite-02.ogg
+    - biomepack-jadeite-03.ogg
+    - biomepack-jadeite-04.ogg
+    - biomepack-jadeite-05.ogg
+    - biomepack-jadeite-06.ogg
+    fallback: ''
+    title: Jadeite Redolence
+    color: '#34CE73'
+  swamp:
+    file: biomepack-jadeite-01.ogg
+    files:
+    - biomepack-jadeite-01.ogg
+    - biomepack-jadeite-02.ogg
+    - biomepack-jadeite-03.ogg
+    - biomepack-jadeite-04.ogg
+    - biomepack-jadeite-05.ogg
+    - biomepack-jadeite-06.ogg
+    fallback: ''
+    title: Jadeite Redolence
+    color: '#8FAF63'
+  savanna:
+    file: biomepack-main-theme.ogg
+    files:
+    - biomepack-main-theme.ogg
+    fallback: ''
+    title: Genshin Impact Main Theme
+    color: '#DFBC68'
+  badlands:
+    file: biomepack-desert.ogg
+    files:
+    - biomepack-desert.ogg
+    fallback: ''
+    title: Hustle and Bustle of Ormos
+    color: '#E18C59'
+  mountain:
+    file: biomepack-wordless-cliffs.ogg
+    files:
+    - biomepack-wordless-cliffs.ogg
+    fallback: ''
+    title: Wordless Cliffs
+    color: '#C4C9D2'
+  ocean:
+    file: biomepack-ocean-01.ogg
+    files:
+    - biomepack-ocean-01.ogg
+    - biomepack-ocean-02.ogg
+    - biomepack-ocean-03.ogg
+    - biomepack-ocean-04.ogg
+    - biomepack-ocean-05.ogg
+    - biomepack-ocean-06.ogg
+    - biomepack-ocean-07.ogg
+    fallback: ''
+    title: Ocean
+    color: '#5AAAF5'
+  beach:
+    file: biomepack-ocean-01.ogg
+    files:
+    - biomepack-ocean-01.ogg
+    - biomepack-ocean-02.ogg
+    - biomepack-ocean-03.ogg
+    - biomepack-ocean-04.ogg
+    - biomepack-ocean-05.ogg
+    - biomepack-ocean-06.ogg
+    - biomepack-ocean-07.ogg
+    fallback: ''
+    title: Ocean
+    color: '#F2E1AA'
+  river:
+    file: biomepack-ocean-01.ogg
+    files:
+    - biomepack-ocean-01.ogg
+    - biomepack-ocean-02.ogg
+    - biomepack-ocean-03.ogg
+    - biomepack-ocean-04.ogg
+    - biomepack-ocean-05.ogg
+    - biomepack-ocean-06.ogg
+    - biomepack-ocean-07.ogg
+    fallback: ''
+    title: Ocean
+    color: '#6FCDDD'
+  mushroom:
+    file: biomepack-botsu.ogg
+    files:
+    - biomepack-botsu.ogg
+    fallback: ''
+    title: Botsu 8 (The Last Dance Song)
+    color: '#D79ADF'
+  nether:
+    file: biomepack-botsu.ogg
+    files:
+    - biomepack-botsu.ogg
+    fallback: ''
+    title: Botsu 8 (The Last Dance Song)
+    color: '#F17A62'
+  end:
+    file: biomepack-final-duet.ogg
+    files:
+    - biomepack-final-duet.ogg
+    fallback: ''
+    title: OMORI - Final Duet
+    color: '#C59DF2'
+  taiga:
+    file: biomepack-taiga.ogg
+    files:
+    - biomepack-taiga.ogg
+    fallback: ''
+    title: Taiga
+    color: '#64A99B'
+overrides: {}
+bundled-audio-version: 2.5.0
+fade-out-seconds: 2.0
+fade-in-seconds: 1.5

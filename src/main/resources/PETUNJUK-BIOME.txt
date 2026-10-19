@@ -1,0 +1,200 @@
+YouTubeBacksound 2.8.0 — Audio dari biome.zip
+Folia / Minecraft 1.21.11 / Java 21
+
+CARA PASANG
+1. Matikan server, cadangkan JAR/config lama, ganti JAR lama dengan versi ini.
+   Jangan memasang dua versi plugin bersamaan.
+2. Nyalakan server. Audio bawaan baru diekstrak otomatis ke folder music/.
+   Anda tidak perlu mengekstrak biome.zip secara manual atau memasang yt-dlp.
+3. Pemetaan biome lama dicadangkan sebagai biome-music.before-2.5.0.yml.
+   Plugin menerapkan biome-music.yml baru sekali. Edit file itu lalu
+   /ytmusic reload untuk mengubah pemetaan berikutnya.
+4. URL dan port resource pack di config.yml tetap mengikuti pengaturan server.
+   Waktu tunggu resource pack dinaikkan menjadi 120 detik saat startup karena
+   paket audio lebih besar. Pemain harus menerima resource pack server.
+5. /musicgui atau /ytmusic volume: volume pribadi dan mute/unmute tersimpan.
+   Volume mengulang bagian lagu aktif dari awal. Nama biome dan warna tetap ada.
+
+PEMETAAN AUDIO
+snow -> snowy.ogg
+desert -> desert.ogg
+cave -> cave.ogg; cave (2).ogg; cave 3.ogg
+deep-dark -> cave 3.ogg
+lush-caves -> cave (2).ogg
+plains -> plains.ogg
+forest -> Jadeite Redolence - Disc 1： Enthralled by the Spring Breeze｜Genshin Impact.ogg
+jungle -> Jadeite Redolence - Disc 1： Enthralled by the Spring Breeze｜Genshin Impact.ogg
+swamp -> Jadeite Redolence - Disc 1： Enthralled by the Spring Breeze｜Genshin Impact.ogg
+savanna -> Genshin Impact Main Theme.ogg
+badlands -> desert.ogg
+mountain -> Wordless Cliffs.ogg
+ocean -> ocean.ogg
+beach -> ocean.ogg
+river -> ocean.ogg
+mushroom -> Botsu 8 (The Last Dance Song).ogg
+nether -> Botsu 8 (The Last Dance Song).ogg
+end -> OMORI - Final Duet.ogg
+taiga -> Taiga.ogg
+
+Pemetaan file yang namanya tidak menyebut biome dipilih berdasarkan tema.
+Taiga kini memiliki kelompok sendiri; Snowy Taiga tetap menggunakan Snowy.
+Ocean/Beach/River memakai playlist ocean yang sama. Forest/Jungle/Swamp
+memakai album Jadeite. Nether/Mushroom memakai Botsu 8. Semua 13 audio unggahan
+terpakai. Gua biasa bergantian cave, cave (2), cave 3; Deep Dark memakai cave 3
+sedangkan Lush Caves memakai cave (2). Default biome lain memakai Plains.
+
+AUDIO PANJANG DAN UKURAN
+Ocean sekitar 62 menit dibagi menjadi 7 bagian, album Jadeite sekitar 48 menit
+menjadi 6 bagian. Maksimum 540 detik per bagian. Seluruh isi dipertahankan;
+ada perpindahan singkat saat berganti bagian. Lagu diputar berurutan dan
+mengulang dari bagian pertama setelah playlist selesai, khusus tiap pemain.
+Keluar kelompok biome lalu masuk lagi memulai playlist dari bagian pertama.
+Audio dikode ulang ke OGG Vorbis stereo untuk mengurangi ukuran: audio panjang
+40 kbps/24 kHz, audio pendek 64 kbps/32 kHz. Kualitas dikompresi dari unggahan.
+Audio baru sekitar 36.96 MiB. File asli dalam biome.zip tidak diubah.
+
+FOLDER MUSIK LAMA
+Nama file bawaan baru memakai prefiks biomepack- agar tidak menimpa file lama.
+Resource pack mengikutkan file yang dirujuk oleh konfigurasi biome, songs dan
+playlist, bukan semua OGG yang kebetulan ada di folder. Lagu lama yang masih
+terdaftar tetap bisa ikut membuat paket lebih besar; total batas tetap 64 MiB.
+File OGG lokal maksimal 32 MiB dan durasi mengikuti max-duration-seconds.
+Resource pack diunduh pemain melalui public-base-url, bukan YouTube.
+
+KONFIGURASI
+biome-music.yml: profiles.<kelompok>.files berisi daftar OGG berurutan.
+profiles.<kelompok>.title dan color menentukan judul lagu dan warna biome.
+Profile file/fallback masih didukung untuk konfigurasi satu lagu.
+Mute dilakukan lewat GUI; /ytmusic stop hanya menghentikan antrean global.
+Cave: Overworld, Y <= cave-max-y (48), termasuk saat terendam air atau terkena skylight.
+Deep Dark/Lush Caves tetap memiliki lagu sendiri di bawah batas kedalaman.
+Nether dan End tetap memakai musik dimensinya, tidak diubah menjadi cave.
+Judul biome ditampilkan setelah stabil 0.8 detik untuk menghindari berkedip.
+
+VERIFIKASI
+Kompilasi Java 21 dengan Paper API 1.21.11 berhasil.
+Pemetaan biome, pemilihan indeks playlist, codec, durasi lengkap dan batas
+ukuran diperiksa. Semua bagian audio berhasil didekode. Belum diuji langsung
+pada server Folia aktif; coba dua pemain di biome berbeda, playlist berganti
+bagian, teleport, GUI, resource pack, login ulang dan /ytmusic reload.
+Sumber Java perubahan berada di META-INF/sources.
+
+PERUBAHAN 2.6.0
+- Deteksi cave sepenuhnya memakai kedalaman Y. Status air dan skylight tidak
+  membatalkan musik gua. Cave max Y masih bisa diubah di biome-music.yml.
+- Default fade-out 2 detik, lalu fade-in 1.5 detik saat berganti lagu biome.
+  fade-out-seconds dan fade-in-seconds mendukung 0 sampai 10 detik.
+- Lagu lama tetap berjalan selama fade. Jika pemain kembali ke biome lama
+  sebelum transisi selesai dan lagunya sama, gain dinaikkan lagi tanpa restart.
+- Semua audio, playlist, warna, volume per pemain dan konfigurasi URL tetap ada.
+- Versi 2.5.0 yang sudah terpasang tidak ditimpa pemetaan biomenya. Dua pengaturan
+  fade ditambahkan jika belum ada. Tidak perlu menghapus konfigurasi atau audio.
+
+CARA KERJA DAN KOMPATIBILITAS FADE
+Minecraft Java tidak menyediakan API Bukkit untuk mengubah gain suara aktif.
+Implementasi memakai sumber audio virtual berupa empty text display yang hanya
+ada pada klien pemilik, tanpa spawn entity di dunia server. Jarak sumber diubah
+mengikuti kurva gain untuk memakai atenuasi bawaan Minecraft. Sound tidak
+berulang dari awal setiap penurunan volume. Tidak perlu plugin tambahan.
+Binding paket ditujukan untuk Mojang-mapped Paper/Folia 1.21.11, Java 21.
+Jika binding runtime gagal, console menampilkan peringatan satu kali dan plugin
+memakai pemutar biasa tanpa fade. Perpindahan dimensi dan respawn mereset sumber;
+logout/plugin disable membersihkan sumber virtual melalui koneksi pemilik.
+
+VALIDASI 2.6.0
+Kompilasi Java 21 berhasil. 305 pemeriksaan routing/playlist/volume/label serta
+58 pemeriksaan kurva fade, pembalikan arah dan keterlambatan tick lulus.
+Integritas JAR dan identitas seluruh 24 audio dibandingkan dengan versi 2.5.0.
+Belum diuji pada server Folia dan klien Minecraft aktif. Coba gua berair di
+Y 48 dan Y 49, masuk/keluar biome, kembali melintasi batas saat fade, berenang,
+teleport, respawn, GUI mute/unmute dan dua pemain di biome berbeda.
+
+BOSS RPG MYTHICMOBS — BARU DI 2.7.0
+Dibuat dan dikompilasi untuk JAR MythicMobs 5.13.0 yang diberikan pengguna.
+Semua fitur musik biome, audio sebelumnya, cave berbasis Y, fade dan GUI tetap ada.
+Enam boss menggunakan mob vanilla dengan nama, skala, AI agresif, armor,
+boss bar, loot sederhana dan skill area bertelegraph satu detik.
+
+ID BOSS              NAMA              HP    MOB DASAR
+RPG_FrostWarden       Frost Warden      650   Stray
+RPG_DuneTyrant        Dune Tyrant       800   Husk
+RPG_AbyssSentinel     Abyss Sentinel    900   Wither Skeleton
+RPG_AncientTreant     Ancient Treant   1000   Iron Golem
+RPG_TideReaver        Tide Reaver       700   Drowned
+RPG_EmberOverlord     Ember Overlord   1000   Piglin Brute
+
+Skill: Frost Nova (slow), Sandstorm (blindness), Abyss Wave (weakness),
+Root Quake (slow + damage), Tidal Crash (slow + knockback), Ember Burst
+(damage + membakar entity). Semua boss punya buff Rage saat HP di bawah 40%.
+Damage skill mengikuti armor. Tidak memakai ledakan atau perusakan blok.
+Boss hanya dipanggil manual; tidak ada RandomSpawns atau spawner otomatis.
+Despawn CHUNK: akan hilang setelah chunk tidak dimuat/server restart.
+Ini memakai tampilan mob vanilla, tanpa model/tekstur boss khusus.
+
+CARA MEMASANG BOSS
+1. Stop server. Pastikan MythicMobs 5.13.0 terpasang di plugins/.
+2. Ganti JAR YouTubeBacksound lama dengan versi 2.7.0, lalu start server.
+3. Plugin menyalin file boss (jika belum ada) ke:
+   plugins/MythicMobs/Packs/RPG_Biome_Bosses/Mobs/BiomeBosses.yml
+   plugins/MythicMobs/Packs/RPG_Biome_Bosses/Skills/BiomeBossSkills.yml
+   plugins/MythicMobs/Packs/RPG_Biome_Bosses/packinfo.yml
+   File yang sudah ada tidak ditimpa. Salinan contoh ada pula di
+   plugins/YouTubeBacksound/boss-pack/.
+4. Karena MythicMobs dimuat lebih dulu, jalankan /mm reload setelah file disalin.
+5. Sebagai OP, panggil boss di lokasi Anda, misalnya:
+   /mm mobs spawn RPG_FrostWarden 1
+   /mm mobs spawn RPG_DuneTyrant 1
+   /mm mobs spawn RPG_AbyssSentinel 1
+   /mm mobs spawn RPG_AncientTreant 1
+   /mm mobs spawn RPG_TideReaver 1
+   /mm mobs spawn RPG_EmberOverlord 1
+   Uji awal di area terpisah. HP/damage/skill bisa disesuaikan dalam file MythicMobs
+   di atas, lalu /mm reload. Perubahan tidak selalu mengubah boss yang sudah spawn.
+6. Tanpa MythicMobs, fitur biome tetap bekerja; boss tidak akan terpasang aktif.
+
+LAGU BOSS MENYUSUL
+Semua profil musik boss dinonaktifkan secara default. Boss sudah dapat dilawan,
+namun musik biome tetap diputar. Tidak ada file audio kosong yang dibuat.
+Slot di plugins/YouTubeBacksound/boss-music.yml:
+  RPG_FrostWarden:   boss-snow.ogg
+  RPG_DuneTyrant:    boss-desert.ogg
+  RPG_AbyssSentinel: boss-cave.ogg
+  RPG_AncientTreant: boss-forest.ogg
+  RPG_TideReaver:    boss-ocean.ogg
+  RPG_EmberOverlord: boss-nether.ogg
+Nanti upload OGG Vorbis ke folder music/, lalu ubah enabled: true pada profil
+boss terkait dan /ytmusic reload. Files: [lagu1.ogg, lagu2.ogg] mendukung playlist
+per boss; gunakan nama key 'files' huruf kecil. File/durasi/batas resource pack
+sama seperti musik biome. Jika file belum ada, musik biome tetap berjalan.
+Contoh:
+  bosses:
+    RPG_FrostWarden:
+      name: Frost Warden
+      enabled: true
+      file: boss-snow.ogg
+
+PERILAKU MUSIK SAAT DIAKTIFKAN NANTI
+- Musik hanya mengambil alih pemain yang menyerang/diserang boss atau menjadi
+  target aggro boss. Termasuk serangan panah/proyektil. Pemain yang hanya lewat
+  tidak ikut ditandai hanya karena berada dekat boss.
+- Boss berbeda dapat punya lagu sendiri. Jika melawan beberapa boss sekaligus,
+  pertarungan yang paling baru ditandai diprioritaskan.
+- Boss mati/despawn atau pemain mati/logout/pindah dunia mengakhiri pertarungan.
+  Lebih jauh dari max-distance (64 blok) atau tanpa keterlibatan selama
+  combat-timeout-seconds (20 detik) juga mengembalikan musik biome.
+- Fade-out/fade-in dan volume pribadi tetap digunakan. Lagu boss berulang selama
+  pertarungan. Konfigurasi ini hanya berlaku untuk ID yang didaftarkan.
+- Entity boss dipantau oleh entity scheduler-nya, pemain memakai scheduler
+  pemain; posisi antar-region dibaca melalui snapshot, bukan akses world global.
+
+VALIDASI 2.7.0
+Berhasil dikompilasi dengan Java 21, Paper API 1.21.11 dan JAR MythicMobs
+5.13.0 yang diunggah. 381 pemeriksaan logika encounter/biome/fade lulus,
+termasuk pembaruan snapshot bersamaan. Struktur YAML, referensi tujuh metaskill,
+enam profil musik nonaktif, dan keberadaan mekanik dalam JAR diperiksa.
+Semua 24 file audio biome dibandingkan byte per byte dengan versi sebelumnya.
+Belum diuji langsung pada server Folia aktif: setelah /mm reload, periksa console
+untuk kesalahan skill/opsi, uji spawn keenam boss, skill, loot, dua pemain,
+boss mati/despawn, dan musik setelah audio boss tersedia.
+
+PEMBARUAN 2.8.0: Spawn boss kini otomatis. Lihat PETUNJUK-RPG-AUTO.txt untuk aturan dan resource/datapack.

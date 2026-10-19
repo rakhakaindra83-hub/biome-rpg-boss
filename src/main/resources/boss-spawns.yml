@@ -1,0 +1,21 @@
+# RPG Boss otomatis untuk Java/Folia 1.21.11. /rpgboss reload setelah mengubah.
+enabled: true
+interval-seconds: 60
+spawn-chance: 0.20
+minimum-session-seconds: 300
+minimum-distance: 24
+maximum-distance: 40
+world-spawn-safe-radius: 256
+maximum-global: 6
+maximum-per-world: 2
+minimum-boss-spacing: 192
+area-cell-size: 256
+area-cooldown-seconds: 1800
+player-cooldown-seconds: 1200
+boss-lifetime-seconds: 1800
+weapon-drop-chance: 0.20
+install-datapack: true
+# Daftar kosong berarti semua world kecuali excluded-worlds, End tidak dipilih otomatis.
+allowed-worlds: []
+excluded-worlds: [hub, lobby, spawn, world_lobby]
+enabled-themes: [frost, desert, cave, forest, ocean, nether]

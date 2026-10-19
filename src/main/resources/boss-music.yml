@@ -1,0 +1,35 @@
+# Musik boss menunggu audio: enabled=false per boss agar biome tetap berjalan.
+# Nanti upload OGG Vorbis ke plugins/YouTubeBacksound/music/ lalu ubah enabled=true.
+# /ytmusic reload membangun resource pack dan menerapkan konfigurasi boss.
+# files: [lagu1.ogg, lagu2.ogg] juga didukung untuk playlist per boss.
+# Peserta: menyerang/diserang boss (termasuk proyektil), atau target aggro boss.
+# Musik berakhir saat boss mati/despawn, pemain mati/keluar dunia,
+# melewati jarak, atau tidak terlibat lagi selama combat-timeout-seconds.
+enabled: true
+combat-timeout-seconds: 20
+max-distance: 64
+bosses:
+  RPG_FrostWarden:
+    name: Frost Warden
+    enabled: false
+    file: boss-snow.ogg
+  RPG_DuneTyrant:
+    name: Dune Tyrant
+    enabled: false
+    file: boss-desert.ogg
+  RPG_AbyssSentinel:
+    name: Abyss Sentinel
+    enabled: false
+    file: boss-cave.ogg
+  RPG_AncientTreant:
+    name: Ancient Treant
+    enabled: false
+    file: boss-forest.ogg
+  RPG_TideReaver:
+    name: Tide Reaver
+    enabled: false
+    file: boss-ocean.ogg
+  RPG_EmberOverlord:
+    name: Ember Overlord
+    enabled: false
+    file: boss-nether.ogg
